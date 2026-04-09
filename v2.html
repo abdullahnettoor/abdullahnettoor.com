@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abdullahnettoor — Backend Engineer</title>
+    <meta name="google-adsense-account" content="ca-pub-5504985717722760">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5504985717722760"
+     crossorigin="anonymous"></script>
+    <meta name="description" content="Abdullah Nettoor — Backend Engineer building high-performance systems with Go, Flutter, and cloud-native infrastructure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #08090d;
+            --bg2: #0d0f14;
+            --bg3: #12151c;
+            --surface: #181c25;
+            --border: rgba(0, 255, 136, 0.12);
+            --border2: rgba(0, 255, 136, 0.06);
+            --text: #c8cdd8;
+            --text2: #6b7280;
+            --white: #e8ecf4;
+            --green: #00ff88;
+            --green2: #00cc6a;
+            --green-dim: rgba(0, 255, 136, 0.08);
+            --cyan: #00d4ff;
+            --amber: #ffb800;
+            --red: #ff4757;
+            --mono: 'JetBrains Mono', monospace;
+            --body: 'Space Grotesk', sans-serif;
+            --display: 'Syne', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--body);
+            font-weight: 400;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background: var(--green);
+            color: var(--bg);
+        }
+
+        /* ── SCANLINE OVERLAY ── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            border-bottom: 1px solid var(--border2);
+            background: rgba(8, 9, 13, 0.92);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--green);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-logo::before {
+            content: '> ';
+            opacity: 0.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 400;
+            color: var(--text2);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+            border-color: var(--border);
+            background: var(--green-dim);
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.06), transparent 70%);
+            top: 20%;
+            right: 10%;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 20px); }
+        }
+
+        .hero-prefix {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text2);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: typeIn 0.6s 0.3s forwards;
+        }
+
+        .hero-prefix span {
+            color: var(--green);
+        }
+
+        .hero-name {
+            font-family: var(--display);
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 800;
+            line-height: 0.95;
+            color: var(--white);
+            letter-spacing: -0.03em;
+            opacity: 0;
+            animation: typeIn 0.8s 0.5s forwards;
+        }
+
+        .hero-name .highlight {
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text2);
+            margin-top: 2rem;
+            max-width: 55ch;
+            line-height: 1.8;
+            opacity: 0;
+            animation: typeIn 0.6s 0.8s forwards;
+        }
+
+        .hero-subtitle strong {
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: typeIn 0.6s 1s forwards;
+        }
+
+        .btn {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: var(--bg);
+            border: 1px solid var(--green);
+        }
+
+        .btn-primary:hover {
+            background: var(--green2);
+            box-shadow: 0 0 24px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--green);
+            color: var(--green);
+            background: var(--green-dim);
+        }
+
+        .hero-status {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border2);
+            opacity: 0;
+            animation: typeIn 0.6s 1.2s forwards;
+        }
+
+        .status-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .status-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text2);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-value {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        /* ── SECTION ── */
+        section {
+            padding: 6rem 2.5rem;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-num {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: var(--display);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── ABOUT BENTO ── */
+        #about {
+            border-top: 1px solid var(--border2);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1px;
+            background: var(--border2);
+        }
+
+        .bento-card {
+            background: var(--bg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: background 0.3s;
+        }
+
+        .bento-card:hover {
+            background: var(--bg2);
+        }
+
+        .bento-card.span-2 {
+            grid-column: span 2;
+        }
+
+        .bento-card.span-3 {
+            grid-column: span 3;
+        }
+
+        .bento-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text2);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .bento-value {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .bento-value.green { color: var(--green); }
+        .bento-value.cyan { color: var(--cyan); }
+        .bento-value.amber { color: var(--amber); }
+
+        .bento-text {
+            font-size: 0.9rem;
+            color: var(--text2);
+            line-height: 1.7;
+        }
+
+        .bento-text strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ── SKILLS ── */
+        #skills {
+            border-top: 1px solid var(--border2);
+        }
+
+        .skills-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .skill-group-title {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-list li {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--text2);
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.2s;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--green);
+            font-size: 0.6rem;
+        }
+
+        .skill-list li:hover {
+            color: var(--text);
+        }
+
+        .skill-list li.primary {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* ── PRODUCTS ── */
+        #products {
+            border-top: 1px solid var(--border2);
+            background: var(--bg2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .p-card {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            background: var(--bg);
+        }
+
+        .p-card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 32px rgba(0, 255, 136, 0.05);
+        }
+
+        .p-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .p-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--green-dim);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .p-badge {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            font-weight: 500;
+        }
+
+        .p-badge.live {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--green);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+        }
+
+        .p-badge.live::before {
+            content: '● ';
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .p-badge.soon {
+            background: rgba(107, 114, 128, 0.1);
+            color: var(--text2);
+            border: 1px solid rgba(107, 114, 128, 0.25);
+        }
+
+        .p-card-name {
+            font-family: var(--display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .p-card-tagline {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--text2);
+        }
+
+        .p-card-desc {
+            font-size: 0.85rem;
+            color: var(--text2);
+            line-height: 1.7;
+        }
+
+        .p-card-stack {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .p-card-stack span {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--green-dim);
+            color: var(--green);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .p-card-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: auto;
+        }
+
+        /* ── PROJECTS ── */
+        #projects {
+            border-top: 1px solid var(--border2);
+        }
+
+        .proj-list { display: flex; flex-direction: column; }
+
+        .proj-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border2);
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .proj-item:hover {
+            background: var(--green-dim);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .proj-num {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text2);
+            min-width: 3ch;
+        }
+
+        .proj-info { display: flex; flex-direction: column; gap: 0.3rem; }
+
+        .proj-name {
+            font-family: var(--display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            transition: color 0.2s;
+        }
+
+        .proj-item:hover .proj-name { color: var(--green); }
+
+        .proj-desc {
+            font-size: 0.8rem;
+            color: var(--text2);
+        }
+
+        .proj-tags {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .proj-tags span {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: var(--text2);
+        }
+
+        .proj-arrow {
+            font-family: var(--mono);
+            color: var(--text2);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .proj-item:hover .proj-arrow {
+            color: var(--green);
+            transform: translateX(4px);
+        }
+
+        /* ── EXPERIENCE ── */
+        #experience {
+            border-top: 1px solid var(--border2);
+            background: var(--bg2);
+        }
+
+        .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+
+        .exp-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+            border-left: 2px solid var(--border);
+            transition: border-color 0.3s;
+        }
+
+        .exp-entry:hover {
+            border-color: var(--green);
+        }
+
+        .exp-when {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-top: 0.15rem;
+        }
+
+        .exp-what { display: flex; flex-direction: column; gap: 0.4rem; }
+
+        .exp-role {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .exp-org {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--green);
+            letter-spacing: 0.05em;
+        }
+
+        .exp-about {
+            font-size: 0.85rem;
+            color: var(--text2);
+            line-height: 1.7;
+            margin-top: 0.25rem;
+        }
+
+        /* ── WRITING ── */
+        #writing {
+            border-top: 1px solid var(--border2);
+        }
+
+        .writing-list { display: flex; flex-direction: column; }
+
+        .write-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border2);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .write-item:hover {
+            background: var(--green-dim);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .write-topic {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            min-width: 10ch;
+        }
+
+        .write-title {
+            font-family: var(--display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            transition: color 0.2s;
+        }
+
+        .write-item:hover .write-title { color: var(--green); }
+
+        .write-arrow {
+            font-family: var(--mono);
+            color: var(--text2);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+
+        .write-item:hover .write-arrow { color: var(--green); }
+
+        /* ── CONTACT ── */
+        #contact {
+            border-top: 1px solid var(--border2);
+            background: var(--bg2);
+            padding: 8rem 2.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-heading {
+            font-family: var(--display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-heading .g {
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-sub {
+            font-size: 0.9rem;
+            color: var(--text2);
+            margin-top: 1.5rem;
+            line-height: 1.7;
+            max-width: 40ch;
+        }
+
+        .contact-links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+        .c-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border2);
+            text-decoration: none;
+            transition: all 0.25s;
+            background: var(--bg);
+        }
+
+        .c-link:hover {
+            border-color: var(--green);
+            background: var(--green-dim);
+        }
+
+        .c-link-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text2);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .c-link:hover .c-link-label { color: var(--green); }
+
+        .c-link-val {
+            font-size: 0.85rem;
+            color: var(--white);
+        }
+
+        .c-link-go {
+            font-family: var(--mono);
+            color: var(--text2);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .c-link:hover .c-link-go {
+            color: var(--green);
+            transform: translateX(3px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 1.5rem 2.5rem;
+            border-top: 1px solid var(--border2);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text2);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes typeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+        .reveal-d4 { transition-delay: 0.4s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav { padding: 0.8rem 1.2rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 1.2rem; }
+            #hero { padding: 6rem 1.2rem 3rem; }
+            .bento-grid { grid-template-columns: 1fr 1fr; }
+            .bento-card.span-3 { grid-column: span 2; }
+            .skills-columns { grid-template-columns: 1fr; gap: 2rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .proj-item { grid-template-columns: auto 1fr; }
+            .proj-arrow { display: none; }
+            .exp-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-status { flex-wrap: wrap; gap: 1.5rem; }
+        }
+
+        @media (max-width: 500px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.span-2, .bento-card.span-3 { grid-column: span 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#hero" class="nav-logo">abdullahnettoor</a>
+        <ul class="nav-links">
+            <li><a href="#about">about</a></li>
+            <li><a href="#skills">stack</a></li>
+            <li><a href="#products">products</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#experience">career</a></li>
+            <li><a href="#writing">writing</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+
+        <div class="hero-prefix"><span>$</span> whoami</div>
+        <h1 class="hero-name">Abdullah<br><span class="highlight">Nettoor.</span></h1>
+        <p class="hero-subtitle">
+            Backend engineer crafting <strong>high-performance systems</strong> in Go,
+            building mobile experiences with Flutter, and shipping products
+            that <strong>people actually use</strong>.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#products" class="btn btn-primary">View Products</a>
+            <a href="https://github.com/abdullahnettoor" target="_blank" class="btn btn-ghost">GitHub →</a>
+        </div>
+
+        <div class="hero-status">
+            <div class="status-item">
+                <span class="status-label">Currently</span>
+                <span class="status-value">HCL Cloud Native Labs</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Focus</span>
+                <span class="status-value">Go · Flutter · Cloud</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Location</span>
+                <span class="status-value">Kochi, Kerala 📍</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Status</span>
+                <span class="status-value">● Open to collaborate</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-header reveal">
+            <span class="section-num">01</span>
+            <h2 class="section-title">About</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-card span-3 reveal">
+                <div class="bento-label">Bio</div>
+                <p class="bento-text">
+                    I'm <strong>Abdullah Nettoor</strong> — a backend engineer and designer from Kochi, Kerala. I specialise in building <strong>efficient, scalable server-side solutions</strong> with Go and mobile applications with Flutter. When I'm not debugging worker pools or architecting social graphs on Neo4j, you'll find me exploring <strong>Web3</strong>, writing about tech on Medium, or building CLI tools that make developers' lives better.
+                </p>
+                <p class="bento-text">
+                    I hold a Bachelor's in <strong>Commerce</strong> and a Bachelor's in <strong>Theology</strong> — a combination that keeps my thinking both analytical and philosophical.
+                </p>
+            </div>
+            <div class="bento-card reveal reveal-d1">
+                <div class="bento-label">Public Repos</div>
+                <div class="bento-value green">39+</div>
+            </div>
+            <div class="bento-card reveal reveal-d1">
+                <div class="bento-label">Primary</div>
+                <div class="bento-value cyan">Go</div>
+            </div>
+            <div class="bento-card reveal reveal-d2">
+                <div class="bento-label">Cloud Platforms</div>
+                <div class="bento-value amber">3+</div>
+            </div>
+            <div class="bento-card reveal reveal-d2">
+                <div class="bento-label">Curiosity</div>
+                <div class="bento-value green">∞</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-header reveal">
+            <span class="section-num">02</span>
+            <h2 class="section-title">Stack</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-columns">
+            <div class="reveal reveal-d1">
+                <div class="skill-group-title">Languages</div>
+                <ul class="skill-list">
+                    <li class="primary">Go</li>
+                    <li class="primary">Dart</li>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>HTML / CSS</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="reveal reveal-d2">
+                <div class="skill-group-title">Infrastructure</div>
+                <ul class="skill-list">
+                    <li class="primary">Docker</li>
+                    <li class="primary">Kubernetes</li>
+                    <li>Kafka</li>
+                    <li>RabbitMQ</li>
+                    <li>Nginx</li>
+                    <li>AWS · GCP · Azure</li>
+                </ul>
+            </div>
+            <div class="reveal reveal-d3">
+                <div class="skill-group-title">Data & Frameworks</div>
+                <ul class="skill-list">
+                    <li class="primary">PostgreSQL</li>
+                    <li class="primary">MongoDB</li>
+                    <li>Neo4j</li>
+                    <li>Redis · Firebase</li>
+                    <li class="primary">Flutter</li>
+                    <li>Gin · Fiber</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+        <div class="section-header reveal">
+            <span class="section-num">03</span>
+            <h2 class="section-title">Products</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="products-grid">
+
+            <div class="p-card reveal reveal-d1">
+                <div class="p-card-top">
+                    <div class="p-card-icon">🫙</div>
+                    <span class="p-badge live">Live</span>
+                </div>
+                <div class="p-card-name">UniGro</div>
+                <div class="p-card-tagline">Community savings, simplified</div>
+                <p class="p-card-desc">A collaborative money-pot platform for groups — track contributions, automate rounds, and manage savings pools with zero friction.</p>
+                <div class="p-card-stack">
+                    <span>Flutter</span><span>Go</span><span>Supabase</span><span>Cloudflare</span>
+                </div>
+                <div class="p-card-actions">
+                    <a href="https://unigro.abdullahnettoor.com" target="_blank" class="btn btn-primary">Try UniGro ↗</a>
+                    <a href="https://github.com/abdullahnettoor" target="_blank" class="btn btn-ghost">Source</a>
+                </div>
+            </div>
+
+            <div class="p-card reveal reveal-d2">
+                <div class="p-card-top">
+                    <div class="p-card-icon">📖</div>
+                    <span class="p-badge live">Live</span>
+                </div>
+                <div class="p-card-name">Holy Quran</div>
+                <div class="p-card-tagline">Raycast Extension</div>
+                <p class="p-card-desc">A beautifully crafted Raycast extension for reading and listening to the Holy Quran — instant search, audio recitation, and bookmarking.</p>
+                <div class="p-card-stack">
+                    <span>TypeScript</span><span>Raycast API</span><span>React</span>
+                </div>
+                <div class="p-card-actions">
+                    <a href="#" class="btn btn-primary">Install ↗</a>
+                    <a href="https://github.com/abdullahnettoor" target="_blank" class="btn btn-ghost">Source</a>
+                </div>
+            </div>
+
+            <div class="p-card reveal reveal-d3">
+                <div class="p-card-top">
+                    <div class="p-card-icon">⚡</div>
+                    <span class="p-badge live">Live</span>
+                </div>
+                <div class="p-card-name">tqwp</div>
+                <div class="p-card-tagline">Go Task Queue Worker Pool</div>
+                <p class="p-card-desc">A production-grade Go package for concurrent task processing — enqueue, process, retry, and scale.</p>
+                <div class="p-card-stack">
+                    <span>Go</span><span>Concurrency</span><span>Open Source</span>
+                </div>
+                <div class="p-card-actions">
+                    <a href="https://github.com/abdullahnettoor/tqwp" target="_blank" class="btn btn-primary">View Package ↗</a>
+                </div>
+            </div>
+
+            <div class="p-card reveal reveal-d4">
+                <div class="p-card-top">
+                    <div class="p-card-icon">🔮</div>
+                    <span class="p-badge soon">Soon</span>
+                </div>
+                <div class="p-card-name">Coming Soon</div>
+                <div class="p-card-tagline">Something new is brewing</div>
+                <p class="p-card-desc">Working on something exciting — a new tool for developers that'll change how you think about backend workflows.</p>
+                <div class="p-card-stack">
+                    <span>Go</span><span>???</span>
+                </div>
+                <div class="p-card-actions">
+                    <a href="https://github.com/abdullahnettoor" target="_blank" class="btn btn-ghost">Follow for updates</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-header reveal">
+            <span class="section-num">04</span>
+            <h2 class="section-title">Projects</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="proj-list">
+            <a href="https://github.com/abdullahnettoor/tqwp" target="_blank" class="proj-item reveal">
+                <span class="proj-num">01</span>
+                <div class="proj-info">
+                    <div class="proj-name">tqwp</div>
+                    <div class="proj-desc">Concurrent task processing with worker pools — easy API for enqueueing, running, and retrying.</div>
+                    <div class="proj-tags"><span>Go</span> <span>·</span> <span>Concurrency</span> <span>·</span> <span>Open Source</span></div>
+                </div>
+                <span class="proj-arrow">→</span>
+            </a>
+            <a href="https://github.com/abdullahnettoor/connect-social-media" target="_blank" class="proj-item reveal reveal-d1">
+                <span class="proj-num">02</span>
+                <div class="proj-info">
+                    <div class="proj-name">connect-social-media</div>
+                    <div class="proj-desc">Social media backend with Neo4j graph database and Kafka message queuing.</div>
+                    <div class="proj-tags"><span>Go</span> <span>·</span> <span>Neo4j</span> <span>·</span> <span>Kafka</span></div>
+                </div>
+                <span class="proj-arrow">→</span>
+            </a>
+            <a href="https://github.com/abdullahnettoor/food-delivery-ecommerce" target="_blank" class="proj-item reveal reveal-d2">
+                <span class="proj-num">03</span>
+                <div class="proj-info">
+                    <div class="proj-name">food-delivery-ecommerce</div>
+                    <div class="proj-desc">Comprehensive food ordering platform — multi-user roles, auth, real-time order management.</div>
+                    <div class="proj-tags"><span>Go</span> <span>·</span> <span>PostgreSQL</span> <span>·</span> <span>REST API</span></div>
+                </div>
+                <span class="proj-arrow">→</span>
+            </a>
+            <a href="https://github.com/abdullahnettoor/tictactoe" target="_blank" class="proj-item reveal reveal-d3">
+                <span class="proj-num">04</span>
+                <div class="proj-info">
+                    <div class="proj-name">tictactoe CLI</div>
+                    <div class="proj-desc">Developer-friendly TicTacToe that runs in your terminal.</div>
+                    <div class="proj-tags"><span>Go</span> <span>·</span> <span>CLI</span> <span>·</span> <span>Terminal</span></div>
+                </div>
+                <span class="proj-arrow">→</span>
+            </a>
+            <a href="https://github.com/abdullahnettoor" target="_blank" class="proj-item reveal reveal-d4">
+                <span class="proj-num">05</span>
+                <div class="proj-info">
+                    <div class="proj-name">growpot</div>
+                    <div class="proj-desc">Flutter savings management app — smart tracking and visualization for effortless saving.</div>
+                    <div class="proj-tags"><span>Flutter</span> <span>·</span> <span>Dart</span> <span>·</span> <span>Mobile</span></div>
+                </div>
+                <span class="proj-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-header reveal">
+            <span class="section-num">05</span>
+            <h2 class="section-title">Career</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="exp-list">
+            <div class="exp-entry reveal reveal-d1">
+                <div class="exp-when">Current</div>
+                <div class="exp-what">
+                    <div class="exp-role">Backend Engineer</div>
+                    <div class="exp-org">HCL Cloud Native Labs</div>
+                    <p class="exp-about">Working on cloud-native backend systems, building scalable microservices and contributing to enterprise-grade infrastructure solutions.</p>
+                </div>
+            </div>
+            <div class="exp-entry reveal reveal-d2">
+                <div class="exp-when">Ongoing</div>
+                <div class="exp-what">
+                    <div class="exp-role">Open Source Contributor</div>
+                    <div class="exp-org">GitHub / Community</div>
+                    <p class="exp-about">Maintaining tqwp and other Go packages. Contributing to the developer community through open-source tools and technical writing on Medium.</p>
+                </div>
+            </div>
+            <div class="exp-entry reveal reveal-d3">
+                <div class="exp-when">Background</div>
+                <div class="exp-what">
+                    <div class="exp-role">Web Developer & Designer</div>
+                    <div class="exp-org">Freelance / Kochi</div>
+                    <p class="exp-about">Designed and built web experiences for clients across Kerala. Started the journey with a passion for design that still informs backend architecture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing">
+        <div class="section-header reveal">
+            <span class="section-num">06</span>
+            <h2 class="section-title">Writing</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="writing-list">
+            <a href="https://medium.com/@abdullahnettoor" target="_blank" class="write-item reveal">
+                <span class="write-topic">Golang</span>
+                <div class="write-title">Building Concurrent Worker Pools in Go</div>
+                <span class="write-arrow">→</span>
+            </a>
+            <a href="https://medium.com/@abdullahnettoor" target="_blank" class="write-item reveal reveal-d1">
+                <span class="write-topic">Architecture</span>
+                <div class="write-title">Graph Databases for Social Networks</div>
+                <span class="write-arrow">→</span>
+            </a>
+            <a href="https://medium.com/@abdullahnettoor" target="_blank" class="write-item reveal reveal-d2">
+                <span class="write-topic">DevOps</span>
+                <div class="write-title">Kubernetes for Backend Engineers</div>
+                <span class="write-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-grid">
+            <div>
+                <h2 class="contact-heading reveal">Let's<br><span class="g">Connect.</span></h2>
+                <p class="contact-sub reveal reveal-d1">Open to collaborations, interesting backend problems, and conversations about Go, Web3, or anything in between.</p>
+            </div>
+            <div class="contact-links">
+                <a href="https://linkedin.com/in/abdullahnettoor" target="_blank" class="c-link reveal reveal-d1">
+                    <div>
+                        <div class="c-link-label">LinkedIn</div>
+                        <div class="c-link-val">abdullahnettoor</div>
+                    </div>
+                    <span class="c-link-go">→</span>
+                </a>
+                <a href="https://github.com/abdullahnettoor" target="_blank" class="c-link reveal reveal-d2">
+                    <div>
+                        <div class="c-link-label">GitHub</div>
+                        <div class="c-link-val">abdullahnettoor</div>
+                    </div>
+                    <span class="c-link-go">→</span>
+                </a>
+                <a href="https://behance.net/abdullahnettoor" target="_blank" class="c-link reveal reveal-d2">
+                    <div>
+                        <div class="c-link-label">Behance</div>
+                        <div class="c-link-val">abdullahnettoor</div>
+                    </div>
+                    <span class="c-link-go">→</span>
+                </a>
+                <a href="https://medium.com/@abdullahnettoor" target="_blank" class="c-link reveal reveal-d3">
+                    <div>
+                        <div class="c-link-label">Medium</div>
+                        <div class="c-link-val">@abdullahnettoor</div>
+                    </div>
+                    <span class="c-link-go">→</span>
+                </a>
+                <a href="https://wa.me/919061904860" target="_blank" class="c-link reveal reveal-d4">
+                    <div>
+                        <div class="c-link-label">WhatsApp</div>
+                        <div class="c-link-val">+91 90619 04860</div>
+                    </div>
+                    <span class="c-link-go">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>© 2026 Abdullah Nettoor — Kochi, India</span>
+        <span>Built with Go instincts & terminal aesthetics.</span>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => obs.observe(r));
+    </script>
+</body>
+
+</html>
