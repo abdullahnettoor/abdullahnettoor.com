@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://abdullahnettoor.com",
   output: "static",
-  trailingSlash: "never",
+  trailingSlash: "always",
   integrations: [sitemap()],
   build: {
     format: "directory"

@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { data } = project;
 ---
-<BaseLayout title={`${data.title} case study — Abdullah Nettoor`} description={data.description} canonicalPath={`/work/${project.id}`} themeColor={data.accent}>
+<BaseLayout title={`${data.title} case study — Abdullah Nettoor`} description={data.description} canonicalPath={`/work/${project.id}/`} themeColor={data.accent}>
   <div style={`--accent:${data.accent};--accent-ink:${data.accentInk};--hero-copy:${data.heroCopyColor}`}>
     <header class="shell case-topbar"><a class="back" href="/#work">← Abdullah Nettoor</a><a class="external" href={data.liveUrl} target="_blank" rel="noopener noreferrer">Visit live product ↗</a></header>
     <main>
@@ -22,7 +22,7 @@ const { data } = project;
         <section><p class="micro">Engineering concerns</p><h2>{data.concernsTitle}</h2>{data.concerns.map((concern) => <div class="case-decision"><span class="micro">{concern.label}</span><h3>{concern.title}</h3><p>{concern.description}</p></div>)}<p class="boundary">{data.boundary}</p></section>
         <section><p class="micro">Inspect</p><h2>{data.inspectTitle}</h2><p class="lead">{data.inspect}</p><div class="case-actions"><a class="button" href={data.liveUrl} target="_blank" rel="noopener noreferrer">Visit {data.title} ↗</a>{data.repositoryUrl && <a class="button secondary" href={data.repositoryUrl} target="_blank" rel="noopener noreferrer">View repository ↗</a>}{!data.repositoryUrl && <a class="button secondary" href="/#contact">Discuss the work</a>}</div></section>
       </div></div></section>
-      <section class="shell next"><p class="micro">Next case study</p><a href={`/work/${data.nextProject}`}>{data.nextLabel} →</a></section>
+      <section class="shell next"><p class="micro">Next case study</p><a href={`/work/${data.nextProject}/`}>{data.nextLabel} →</a></section>
     </main>
     <footer class="shell case-footer"><span>© 2026 Abdullah Nettoor</span><a href="/">Return home</a></footer>
   </div>

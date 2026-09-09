@@ -3,7 +3,7 @@ import { profile, projects } from "../data/siteData";
 
 const featuredProjects = projects.filter((project) => project.featured).sort((a, b) => a.order - b.order);
 const projectHref = (project: (typeof projects)[number]) => project.caseStudy
-  ? `/work/${project.id}`
+  ? `/work/${project.id}/`
   : project.liveUrl ?? project.repositoryUrl ?? "#work";
 const isExternal = (href: string) => href.startsWith("http");
 ---
