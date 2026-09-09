@@ -1,0 +1,6 @@
+[
+  { "name": "Systems", "details": "Domain modeling, API design, concurrent processing, event-driven workflows, authentication, and authorization." },
+  { "name": "Data", "details": "PostgreSQL, MongoDB, Neo4j, Redis, audit histories, ledgers, and operational state." },
+  { "name": "Delivery", "details": "Docker, Kubernetes, cloud platforms, synchronized clients, deployment, and the behavior after launch." },
+  { "name": "Languages", "details": "Go, TypeScript, Dart and Flutter, Swift, Python, and SQL." }
+]

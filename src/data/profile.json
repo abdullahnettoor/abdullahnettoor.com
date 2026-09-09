@@ -1,0 +1,21 @@
+{
+  "name": "Abdullah Nettoor",
+  "headline": "Product-minded backend engineer",
+  "location": "Kochi, Kerala, India",
+  "heroKicker": "Backend systems · Product ownership · Kochi, India",
+  "heroLead": "I work from ambiguous operational problems to reliable software: shaping the domain, building the backend, and staying involved until the product works for the people using it.",
+  "email": "abdullahnettoor@gmail.com",
+  "portrait": "/assets/ai-avatar.png",
+  "aboutTitle": "I’m interested in the hidden systems inside ordinary work.",
+  "about": "The handoffs, records, and repeated decisions are usually where software earns its place. I bring a design eye to backend work and a backend mind to product decisions. I’m based in Kochi and hold bachelor’s degrees in Commerce and Theology.",
+  "social": {
+    "github": "https://github.com/abdullahnettoor",
+    "linkedin": "https://linkedin.com/in/abdullahnettoor"
+  },
+  "currentRole": {
+    "title": "Backend Engineer",
+    "company": "HCL Cloud Native Labs",
+    "summary": "I build cloud-native backend systems while maintaining an independent maker practice across operational software, native tools, and open source."
+  },
+  "aboutTags": ["Kochi, Kerala", "Backend engineering", "Independent maker", "Open source"]
+}

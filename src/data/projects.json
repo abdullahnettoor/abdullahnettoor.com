@@ -1,0 +1,79 @@
+[
+  {
+    "id": "pumpos",
+    "name": "PumpOS",
+    "summary": "Connected operating software for Indian fuel stations.",
+    "type": ["Product", "Backend", "Desktop"],
+    "featured": true,
+    "order": 1,
+    "caseStudy": true,
+    "liveUrl": "https://pumpos.app",
+    "repositoryUrl": "https://github.com/abdullahnettoor/pumpos",
+    "decision": {
+      "theme": "Continuity",
+      "title": "Keep station work moving through unreliable connectivity.",
+      "description": "The product is designed around offline-ready desktop operations, cloud synchronization, event history, and auditable business-day records."
+    }
+  },
+  {
+    "id": "hibah",
+    "name": "Hibah",
+    "summary": "Recurring donor operations from enrollment to gratitude.",
+    "type": ["Product", "Data", "Workflow"],
+    "featured": true,
+    "order": 2,
+    "caseStudy": true,
+    "liveUrl": "https://hibah.co.in",
+    "decision": {
+      "theme": "Trust",
+      "title": "Keep payments direct while preserving an operational trail.",
+      "description": "Organizations receive UPI payments directly; the product structures reference verification, contribution state, team roles, and reminders."
+    }
+  },
+  {
+    "id": "tqwp",
+    "name": "tqwp",
+    "summary": "A Go worker pool with concurrent task processing and configurable retries.",
+    "type": ["Go", "Concurrency", "Open source"],
+    "featured": false,
+    "order": 3,
+    "caseStudy": false,
+    "repositoryUrl": "https://github.com/abdullahnettoor/tqwp",
+    "decision": {
+      "theme": "Concurrency",
+      "title": "Expose retries without making task processing hard to use.",
+      "description": "A focused Go package for enqueuing tasks, processing them with workers, and configuring retry behavior for failures."
+    }
+  },
+  {
+    "id": "ohmytheme",
+    "name": "ohmytheme",
+    "summary": "A native macOS theme engine for synchronized developer workspaces.",
+    "type": ["Swift", "Native tooling"],
+    "featured": true,
+    "order": 3,
+    "caseStudy": false,
+    "repositoryUrl": "https://github.com/abdullahnettoor/ohmytheme"
+  },
+  {
+    "id": "holy-quran",
+    "name": "Holy Quran",
+    "summary": "A Raycast audio player with verse ranges, loops, reciters, and offline caching.",
+    "type": ["TypeScript", "Raycast"],
+    "featured": true,
+    "order": 4,
+    "caseStudy": false,
+    "repositoryUrl": "https://github.com/raycast/extensions/pull/25745"
+  },
+  {
+    "id": "unigro",
+    "name": "Unigro",
+    "summary": "A collaborative money-pool product for organizers and members.",
+    "type": ["TypeScript", "Product"],
+    "featured": true,
+    "order": 5,
+    "caseStudy": false,
+    "liveUrl": "https://unigro.abdullahnettoor.com",
+    "repositoryUrl": "https://github.com/abdullahnettoor/unigro"
+  }
+]

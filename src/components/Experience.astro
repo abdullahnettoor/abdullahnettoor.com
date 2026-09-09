@@ -1,0 +1,9 @@
+---
+import { experience, profile } from "../data/siteData";
+---
+<section class="experience" id="experience" aria-labelledby="experience-title">
+  <div class="shell experience-grid">
+    <div><p class="micro">Experience</p><h2 id="experience-title">Engineering in context.</h2></div>
+    <div class="current-role"><p class="micro">Current</p><h3>{profile.currentRole.title}</h3><p class="company">{profile.currentRole.company}</p><p>{profile.currentRole.summary}</p><div class="role-focus">{experience.map((item) => <div class="focus"><span>{item.label}</span><p>{item.value}</p></div>)}</div></div>
+  </div>
+</section>

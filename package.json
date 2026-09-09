@@ -1,0 +1,22 @@
+{
+  "name": "abdullahnettoor-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "validate": "npm run build && html-validate 'dist/**/*.html'"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^7.3.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "html-validate": "^10.11.2",
+    "wrangler": "^4.70.0"
+  }
+}

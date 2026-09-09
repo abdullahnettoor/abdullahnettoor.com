@@ -1,0 +1,23 @@
+---
+import { practice, profile } from "../data/siteData";
+---
+<section class="shell hero" aria-labelledby="hero-title">
+  <div class="hero-main">
+    <div>
+      <p class="micro">{profile.heroKicker}</p>
+      <h1 id="hero-title"><span>I build the systems behind</span><strong>useful products.</strong></h1>
+      <p class="hero-copy">{profile.heroLead}</p>
+      <div class="actions"><a class="button" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a><a class="text-link" href="#work">Inspect my work</a></div>
+    </div>
+    <p class="micro">Engineer the whole useful path.</p>
+  </div>
+  <aside class="hero-side" aria-label="How Abdullah approaches product engineering">
+    <div class="working-model">
+      <div class="model-head"><span class="micro">Working model</span><span aria-hidden="true"></span></div>
+      <div class="model-track">
+        {practice.map((item) => <div class="model-step"><span>{item.stage}</span><h2>{item.modelTitle}</h2><p>{item.modelDescription}</p></div>)}
+      </div>
+      <div class="role-note"><div><span>Current role</span><strong>{profile.currentRole.title}<br />{profile.currentRole.company}</strong></div><div><span>Maker practice</span><strong>Operational products<br />Open-source tools</strong></div></div>
+    </div>
+  </aside>
+</section>

@@ -1,0 +1,18 @@
+---
+import { projects } from "../data/siteData";
+
+const decisions = projects.filter((project) => project.decision).sort((a, b) => a.order - b.order);
+const projectHref = (project: (typeof projects)[number]) => project.caseStudy
+  ? `/work/${project.id}`
+  : project.liveUrl ?? project.repositoryUrl ?? "#work";
+const isExternal = (href: string) => href.startsWith("http");
+---
+<section class="shell decisions" aria-labelledby="decisions-title">
+  <div class="decisions-head"><div><p class="micro">Selected decisions</p><h2 id="decisions-title">Judgment leaves a trace.</h2></div><p>A technology list says what I have touched. These examples say more: the constraint, the engineering concern, and where the result can be inspected.</p></div>
+  <div class="decision-list">
+    {decisions.map((project) => {
+      const href = projectHref(project);
+      return <article class="decision"><span class="context">{project.name} · {project.decision?.theme}</span><h3>{project.decision?.title}</h3><p>{project.decision?.description}</p><a href={href} target={isExternal(href) ? "_blank" : undefined} rel={isExternal(href) ? "noopener noreferrer" : undefined} aria-label={`Inspect ${project.name}`}>↗</a></article>;
+    })}
+  </div>
+</section>

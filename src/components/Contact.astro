@@ -1,0 +1,20 @@
+---
+import profile from "../data/profile.json";
+---
+<section class="shell contact" id="contact" aria-labelledby="contact-title">
+  <div>
+    <p class="micro">Start a conversation</p>
+    <h2 id="contact-title">Have a difficult system worth untangling?</h2>
+  </div>
+  <div>
+    <div class="contact-bottom">
+      <p>I’m open to thoughtful backend work, product collaborations, and conversations with people building software for real operations.</p>
+      <div class="contact-links">
+        <a href={`mailto:${profile.email}`}>Email me</a>
+        <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={profile.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+    <footer class="footer"><span>© 2026 {profile.name}</span><span>Designed and built in Kochi</span></footer>
+  </div>
+</section>

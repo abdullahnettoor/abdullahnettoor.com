@@ -1,0 +1,10 @@
+<script>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      document.body.style.setProperty("--progress", String(scrollable > 0 ? window.scrollY / scrollable : 0));
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+  }
+</script>

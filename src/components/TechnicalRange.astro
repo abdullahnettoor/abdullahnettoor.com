@@ -1,0 +1,9 @@
+---
+import { capabilities } from "../data/siteData";
+---
+<section class="range" aria-labelledby="range-title">
+  <div class="shell range-grid">
+    <div class="range-intro"><p class="micro">Technical range</p><h2 id="range-title">Capability, not inventory.</h2><p>I move across layers when the product requires it, with backend systems as the center of gravity.</p></div>
+    <div class="capabilities">{capabilities.map((item) => <div class="capability"><h3>{item.name}</h3><p>{item.details}</p></div>)}</div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Page not found — Abdullah Nettoor" description="The requested page could not be found." noindex>
+  <main class="not-found"><span class="micro">404 · Wrong room</span><h1>Nothing was built here.</h1><p>The page may have moved, or the address may be incomplete.</p><a class="button" href="/">Return to the portfolio</a></main>
+</BaseLayout>
+<style>
+  :global(body) { min-height: 100vh; padding: 24px; display: grid; place-items: center; }
+  .not-found { width: min(760px,100%); padding: clamp(32px,8vw,80px); border-radius: 28px; background: var(--saffron); }
+  h1 { max-width: 8ch; margin: 64px 0 24px; font-size: clamp(48px,10vw,88px); line-height: .92; letter-spacing: -.04em; }
+  p { max-width: 40ch; }
+  .button { margin-top: 30px; }
+</style>

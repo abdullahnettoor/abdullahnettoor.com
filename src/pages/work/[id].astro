@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/case-study.css";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+---
+<BaseLayout title={`${data.title} case study — Abdullah Nettoor`} description={data.description} canonicalPath={`/work/${project.id}`} themeColor={data.accent}>
+  <div style={`--accent:${data.accent};--accent-ink:${data.accentInk};--hero-copy:${data.heroCopyColor}`}>
+    <header class="shell case-topbar"><a class="back" href="/#work">← Abdullah Nettoor</a><a class="external" href={data.liveUrl} target="_blank" rel="noopener noreferrer">Visit live product ↗</a></header>
+    <main>
+      <section class="shell case-hero"><p class="micro">{data.eyebrow}</p><div class="case-hero-grid"><h1>{data.title}</h1><div><p class="case-hero-copy">{data.description}</p><div class="facts">{data.facts.map((fact) => <div class="fact"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</div></div></div></section>
+      <section class="story"><div class="shell story-grid"><aside class="side"><p class="micro">Case study</p><p>This page records public product behavior. Private implementation detail is deliberately omitted until it can be documented accurately.</p></aside><div class="case-content">
+        <section><p class="micro">The operation</p><h2>{data.operationTitle}</h2><p class="lead">{data.operation}</p></section>
+        <section><p class="micro">The useful path</p><h2>{data.workflowTitle}</h2><div class="flow">{data.workflow.map((step) => <div class="flow-step"><span>{step.label}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></div>)}</div></section>
+        <section><p class="micro">Engineering concerns</p><h2>{data.concernsTitle}</h2>{data.concerns.map((concern) => <div class="case-decision"><span class="micro">{concern.label}</span><h3>{concern.title}</h3><p>{concern.description}</p></div>)}<p class="boundary">{data.boundary}</p></section>
+        <section><p class="micro">Inspect</p><h2>{data.inspectTitle}</h2><p class="lead">{data.inspect}</p><div class="case-actions"><a class="button" href={data.liveUrl} target="_blank" rel="noopener noreferrer">Visit {data.title} ↗</a>{data.repositoryUrl && <a class="button secondary" href={data.repositoryUrl} target="_blank" rel="noopener noreferrer">View repository ↗</a>}{!data.repositoryUrl && <a class="button secondary" href="/#contact">Discuss the work</a>}</div></section>
+      </div></div></section>
+      <section class="shell next"><p class="micro">Next case study</p><a href={`/work/${data.nextProject}`}>{data.nextLabel} →</a></section>
+    </main>
+    <footer class="shell case-footer"><span>© 2026 Abdullah Nettoor</span><a href="/">Return home</a></footer>
+  </div>
+</BaseLayout>

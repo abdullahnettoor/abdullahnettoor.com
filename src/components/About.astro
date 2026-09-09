@@ -1,0 +1,9 @@
+---
+import { profile } from "../data/siteData";
+---
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="shell about-grid">
+    <div class="portrait"><img src={profile.portrait} alt={`Portrait of ${profile.name}`} width="920" height="920" /></div>
+    <div><p class="micro">Away from the architecture diagram</p><h2 id="about-title">{profile.aboutTitle}</h2><p class="about-copy">{profile.about}</p><div class="about-meta">{profile.aboutTags.map((tag) => <span>{tag}</span>)}</div></div>
+  </div>
+</section>

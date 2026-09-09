@@ -1,0 +1,6 @@
+[
+  { "label": "Primary focus", "value": "Backend systems and service design" },
+  { "label": "Product practice", "value": "From ambiguous problem to shipped path" },
+  { "label": "Core language", "value": "Go" },
+  { "label": "Broader range", "value": "Flutter, TypeScript, Swift, cloud" }
+]

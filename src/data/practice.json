@@ -1,0 +1,34 @@
+[
+  {
+    "stage": "Observe",
+    "modelTitle": "Find the real handoff",
+    "modelDescription": "Where people, tools, and records stop agreeing.",
+    "title": "Start with the operation, not the feature list.",
+    "description": "I look for repeated handoffs, invisible state, and the moment someone stops trusting the record.",
+    "example": "Recurring donor work split between spreadsheets and WhatsApp became the starting point for Hibah."
+  },
+  {
+    "stage": "Model",
+    "modelTitle": "Name the durable parts",
+    "modelDescription": "Entities, state, boundaries, and failure cases.",
+    "title": "Turn the messy parts into explicit boundaries.",
+    "description": "Domain models, permissions, state transitions, and failure modes should make the system easier to explain.",
+    "example": "PumpOS anchors shifts, stock, credit, and reporting to one business-day record."
+  },
+  {
+    "stage": "Build",
+    "modelTitle": "Connect the path",
+    "modelDescription": "APIs, data, interfaces, and operational feedback.",
+    "title": "Choose tools for the constraint in front of them.",
+    "description": "Go for focused backend services, Flutter for cross-platform products, TypeScript for web systems, Swift for native tools.",
+    "example": "tqwp explores a small Go API for concurrent work and configurable retries."
+  },
+  {
+    "stage": "Ship",
+    "modelTitle": "Put it in use",
+    "modelDescription": "Then learn from what the system meets in reality.",
+    "title": "Own the path until a person can use it.",
+    "description": "Backend quality matters most when it survives contact with product behavior, deployment, and everyday use.",
+    "example": "My work includes live products, public repositories, and an extension submitted to Raycast."
+  }
+]

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://abdullahnettoor.com/sitemap.xml

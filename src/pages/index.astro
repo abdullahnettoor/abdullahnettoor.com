@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Practice from "../components/Practice.astro";
+import DecisionLedger from "../components/DecisionLedger.astro";
+import SelectedWork from "../components/SelectedWork.astro";
+import TechnicalRange from "../components/TechnicalRange.astro";
+import Experience from "../components/Experience.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import ScrollProgress from "../components/ScrollProgress.astro";
+import { profile } from "../data/siteData";
+import { projects } from "../data/siteData";
+import { getCollection } from "astro:content";
+
+const caseStudies = await getCollection("projects");
+const caseStudyIds = new Set(caseStudies.map((entry) => entry.id));
+for (const project of projects) {
+  if (project.caseStudy && !caseStudyIds.has(project.id)) {
+    throw new Error(`Project ${project.id} is marked as a case study but src/content/projects/${project.id}.md does not exist.`);
+  }
+}
+for (const caseStudy of caseStudies) {
+  if (!caseStudyIds.has(caseStudy.data.nextProject)) {
+    throw new Error(`Case study ${caseStudy.id} references missing next project ${caseStudy.data.nextProject}.`);
+  }
+}
+---
+<BaseLayout
+  title={`${profile.name} — ${profile.headline}`}
+  description="Abdullah Nettoor is a product-minded backend engineer building reliable systems, open-source tools, and complete software products from Kochi, India."
+>
+  <a class="skip-link" href="#practice">Skip to engineering practice</a>
+  <Header />
+  <main id="top">
+    <Hero />
+    <Practice />
+    <DecisionLedger />
+    <SelectedWork />
+    <TechnicalRange />
+    <Experience />
+    <About />
+    <Contact />
+  </main>
+  <ScrollProgress />
+</BaseLayout>
