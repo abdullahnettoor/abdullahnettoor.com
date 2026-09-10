@@ -2,7 +2,7 @@
   {
     "id": "pumpos",
     "name": "PumpOS",
-    "summary": "Connected operating software for Indian fuel stations.",
+    "summary": "The operating system for Indian fuel stations. Shifts, nozzles, cash, stock, credit and reports, finally in one record.",
     "type": ["Product", "Backend", "Desktop"],
     "featured": true,
     "order": 1,
@@ -11,14 +11,14 @@
     "repositoryUrl": "https://github.com/abdullahnettoor/pumpos",
     "decision": {
       "theme": "Continuity",
-      "title": "Keep station work moving through unreliable connectivity.",
-      "description": "The product is designed around offline-ready desktop operations, cloud synchronization, event history, and auditable business-day records."
+      "title": "The counter keeps moving even when the network doesn't.",
+      "description": "Built around an offline-ready desktop client that syncs when the connection returns, with event history and auditable business-day snapshots so staff can trace how a number became the number."
     }
   },
   {
     "id": "hibah",
     "name": "Hibah",
-    "summary": "Recurring donor operations from enrollment to gratitude.",
+    "summary": "Recurring giving with a clear trail, from a donor's first enrollment link to the thank-you note.",
     "type": ["Product", "Data", "Workflow"],
     "featured": true,
     "order": 2,
@@ -26,14 +26,14 @@
     "liveUrl": "https://hibah.co.in",
     "decision": {
       "theme": "Trust",
-      "title": "Keep payments direct while preserving an operational trail.",
-      "description": "Organizations receive UPI payments directly; the product structures reference verification, contribution state, team roles, and reminders."
+      "title": "Stay out of the money. Keep every receipt.",
+      "description": "Donors pay the organisation directly over UPI. Hibah never touches the funds. It structures the rest: reference verification, contribution state, team roles and reminders, so the ledger holds up without a payment gateway in the middle."
     }
   },
   {
     "id": "tqwp",
     "name": "tqwp",
-    "summary": "A Go worker pool with concurrent task processing and configurable retries.",
+    "summary": "A Go worker pool for concurrent tasks, with retries you control instead of retries that control you.",
     "type": ["Go", "Concurrency", "Open source"],
     "featured": false,
     "order": 3,
@@ -41,14 +41,14 @@
     "repositoryUrl": "https://github.com/abdullahnettoor/tqwp",
     "decision": {
       "theme": "Concurrency",
-      "title": "Expose retries without making task processing hard to use.",
-      "description": "A focused Go package for enqueuing tasks, processing them with workers, and configuring retry behavior for failures."
+      "title": "Expose retries without making the happy path harder.",
+      "description": "A small Go package. Enqueue tasks, process them with a pool of workers, decide exactly how failures get another go. Nothing else."
     }
   },
   {
     "id": "ohmytheme",
     "name": "ohmytheme",
-    "summary": "A native macOS theme engine for synchronized developer workspaces.",
+    "summary": "A native macOS theme engine. Change one colour scheme and every developer tool on your machine follows.",
     "type": ["Swift", "Native tooling"],
     "featured": true,
     "order": 3,
@@ -58,7 +58,7 @@
   {
     "id": "holy-quran",
     "name": "Holy Quran",
-    "summary": "A Raycast audio player with verse ranges, loops, reciters, and offline caching.",
+    "summary": "A Raycast audio player for the Quran. Pick a reciter, set a verse range, loop it, and keep listening offline.",
     "type": ["TypeScript", "Raycast"],
     "featured": true,
     "order": 4,
@@ -68,7 +68,7 @@
   {
     "id": "unigro",
     "name": "Unigro",
-    "summary": "A collaborative money-pool product for organizers and members.",
+    "summary": "Pool money with people you trust, and let everyone see where it went. Built for organisers and members alike.",
     "type": ["TypeScript", "Product"],
     "featured": true,
     "order": 5,

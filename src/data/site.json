@@ -2,6 +2,6 @@
   "creative": {
     "label": "Creative",
     "homepageVisibility": "auto",
-    "description": "Notes on backend engineering, product decisions, and the systems hidden inside ordinary work."
+    "description": "Field notes from building backends and shipping products. Mostly about the machinery hiding inside ordinary work, and what breaks when nobody looks at it."
   }
 }

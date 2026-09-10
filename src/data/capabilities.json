@@ -1,6 +1,6 @@
 [
-  { "name": "Systems", "details": "Domain modeling, API design, concurrent processing, event-driven workflows, authentication, and authorization." },
-  { "name": "Data", "details": "PostgreSQL, MongoDB, Neo4j, Redis, audit histories, ledgers, and operational state." },
-  { "name": "Delivery", "details": "Docker, Kubernetes, cloud platforms, synchronized clients, deployment, and the behavior after launch." },
-  { "name": "Languages", "details": "Go, TypeScript, Dart and Flutter, Swift, Python, and SQL." }
+  { "name": "Systems", "details": "Domain modeling that survives the second customer. APIs, concurrent processing, event-driven workflows, and auth that says no to the right people." },
+  { "name": "Data", "details": "PostgreSQL, MongoDB, Neo4j, Redis. Audit histories, ledgers, and the operational state everyone forgets to model until it goes missing." },
+  { "name": "Delivery", "details": "Docker, Kubernetes, cloud platforms, clients that stay in sync. Deployment, and then the part that matters: what the system does once real people are on it." },
+  { "name": "Languages", "details": "Go for the backbone. TypeScript for the web. Dart and Flutter across platforms. Swift for the Mac. Python and SQL for everything in between." }
 ]

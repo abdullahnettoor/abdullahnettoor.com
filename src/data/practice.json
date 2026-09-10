@@ -2,33 +2,33 @@
   {
     "stage": "Observe",
     "modelTitle": "Find the real handoff",
-    "modelDescription": "Where people, tools, and records stop agreeing.",
-    "title": "Start with the operation, not the feature list.",
-    "description": "I look for repeated handoffs, invisible state, and the moment someone stops trusting the record.",
-    "example": "Recurring donor work split between spreadsheets and WhatsApp became the starting point for Hibah."
+    "modelDescription": "The moment people, tools and records stop agreeing with each other.",
+    "title": "Start with the work, not the feature list.",
+    "description": "I go looking for the repeated handoff, the state nobody wrote down, and the exact moment someone stops trusting the record and reaches for their phone instead.",
+    "example": "Hibah began with a donor programme run out of a spreadsheet and a WhatsApp group. That gap was the brief."
   },
   {
     "stage": "Model",
     "modelTitle": "Name the durable parts",
-    "modelDescription": "Entities, state, boundaries, and failure cases.",
-    "title": "Turn the messy parts into explicit boundaries.",
-    "description": "Domain models, permissions, state transitions, and failure modes should make the system easier to explain.",
-    "example": "PumpOS anchors shifts, stock, credit, and reporting to one business-day record."
+    "modelDescription": "Entities, state, boundaries, and every way it can go wrong.",
+    "title": "Give the messy parts hard edges.",
+    "description": "Domain models, permissions, state transitions and failure modes should make the system easier to explain to the person running it. If it takes a diagram to defend, the model is wrong.",
+    "example": "PumpOS pins shifts, stock, credit and reporting to a single business-day record. One day, one truth."
   },
   {
     "stage": "Build",
     "modelTitle": "Connect the path",
-    "modelDescription": "APIs, data, interfaces, and operational feedback.",
-    "title": "Choose tools for the constraint in front of them.",
-    "description": "Go for focused backend services, Flutter for cross-platform products, TypeScript for web systems, Swift for native tools.",
-    "example": "tqwp explores a small Go API for concurrent work and configurable retries."
+    "modelDescription": "APIs, data, interfaces, and a way to hear back from the system.",
+    "title": "Pick the tool for the constraint in front of you.",
+    "description": "Go when the service needs to be small and fast. Flutter when one codebase has to reach every screen. TypeScript for the web. Swift when it should feel native on a Mac. No loyalty, only fit.",
+    "example": "tqwp is a small Go API for running concurrent work with retries you can actually configure."
   },
   {
     "stage": "Ship",
     "modelTitle": "Put it in use",
-    "modelDescription": "Then learn from what the system meets in reality.",
+    "modelDescription": "Then learn from what the system meets in the real world.",
     "title": "Own the path until a person can use it.",
-    "description": "Backend quality matters most when it survives contact with product behavior, deployment, and everyday use.",
-    "example": "My work includes live products, public repositories, and an extension submitted to Raycast."
+    "description": "A clean backend that never meets a user is a hobby. Quality shows up after contact with product behaviour, deployment, and a Tuesday afternoon with bad connectivity.",
+    "example": "Live products, public repositories, and an extension submitted to Raycast. All of it is out there to be judged."
   }
 ]

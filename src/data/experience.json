@@ -1,6 +1,6 @@
 [
-  { "label": "Primary focus", "value": "Backend systems and service design" },
-  { "label": "Product practice", "value": "From ambiguous problem to shipped path" },
+  { "label": "Primary focus", "value": "Backend systems and the shape of a service" },
+  { "label": "Product practice", "value": "Fuzzy problem in, shipped path out" },
   { "label": "Core language", "value": "Go" },
   { "label": "Broader range", "value": "Flutter, TypeScript, Swift, cloud" }
 ]

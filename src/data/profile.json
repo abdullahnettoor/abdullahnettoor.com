@@ -1,13 +1,13 @@
 {
   "name": "Abdullah Nettoor",
-  "headline": "Product-minded backend engineer",
+  "headline": "Backend engineer who stays for the whole job",
   "location": "Kochi, Kerala, India",
-  "heroKicker": "Backend systems · Product ownership · Kochi, India",
-  "heroLead": "I work from ambiguous operational problems to reliable software: shaping the domain, building the backend, and staying involved until the product works for the people using it.",
+  "heroKicker": "Backend systems · Products people actually run · Kochi, India",
+  "heroLead": "Somebody hands me a mess of spreadsheets, WhatsApp threads and half-remembered rules. I hand back software that holds the day together. Domain, backend, interface, launch, and the awkward week after launch. I stay for all of it.",
   "email": "abdullahnettoor@gmail.com",
   "portrait": "/assets/ai-avatar.png",
-  "aboutTitle": "I’m interested in the hidden systems inside ordinary work.",
-  "about": "The handoffs, records, and repeated decisions are usually where software earns its place. I bring a design eye to backend work and a backend mind to product decisions. I’m based in Kochi and hold bachelor’s degrees in Commerce and Theology.",
+  "aboutTitle": "Ordinary work is full of hidden machinery. I like taking the cover off.",
+  "about": "Every fuel station, charity and money-pool runs on handoffs, records and the same fifty decisions made again and again. That is where software earns its keep, and where most of it quietly fails. I bring a designer's eye to backend work and a backend engineer's suspicion to product decisions. Based in Kochi. Two bachelor's degrees, in Commerce and Theology, which explains why I care about both the ledger and the people trusting it.",
   "social": {
     "github": "https://github.com/abdullahnettoor",
     "linkedin": "https://linkedin.com/in/abdullahnettoor"
@@ -15,7 +15,7 @@
   "currentRole": {
     "title": "Backend Engineer",
     "company": "HCL Cloud Native Labs",
-    "summary": "I build cloud-native backend systems while maintaining an independent maker practice across operational software, native tools, and open source."
+    "summary": "By day I build cloud-native backend systems at HCL. Nights and weekends go to my own products, native tools and open source, because the best way to learn what a system needs is to be the one who gets the 11pm bug report."
   },
   "aboutTags": ["Kochi, Kerala", "Backend engineering", "Independent maker", "Open source"]
 }
