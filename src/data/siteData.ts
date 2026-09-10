@@ -4,6 +4,7 @@ import practiceJson from "./practice.json";
 import capabilitiesJson from "./capabilities.json";
 import experienceJson from "./experience.json";
 import projectsJson from "./projects.json";
+import siteJson from "./site.json";
 
 const url = z.url();
 
@@ -59,8 +60,17 @@ const projectsSchema = z.array(projectSchema).min(1).superRefine((projects, cont
   }
 });
 
+const siteSchema = z.object({
+  creative: z.object({
+    label: z.string(),
+    homepageVisibility: z.enum(["auto", "show", "hide"]),
+    description: z.string()
+  })
+});
+
 export const profile = profileSchema.parse(profileJson);
 export const practice = practiceSchema.parse(practiceJson);
 export const capabilities = capabilitiesSchema.parse(capabilitiesJson);
 export const experience = experienceSchema.parse(experienceJson);
 export const projects = projectsSchema.parse(projectsJson);
+export const site = siteSchema.parse(siteJson);

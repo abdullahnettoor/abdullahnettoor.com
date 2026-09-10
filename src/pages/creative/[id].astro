@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profile } from "../../data/siteData";
+import "../../styles/creative.css";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("creative", ({ data }) => import.meta.env.PROD ? !data.draft : true);
+  return articles.map((article) => ({ params: { id: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const published = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(article.data.publishedAt);
+const canonicalPath = article.data.canonicalUrl ?? `/creative/${article.id}/`;
+---
+<BaseLayout title={`${article.data.title} — ${profile.name}`} description={article.data.description} canonicalPath={canonicalPath}>
+  <header class="creative-shell creative-topbar"><a href="/creative/">← Creative</a><a href="/">Portfolio ↗</a></header>
+  <main>
+    <header class="creative-shell article-hero"><p class="micro">Creative · {article.data.topics.join(" · ")}</p><h1>{article.data.title}</h1><p class="article-description">{article.data.description}</p><div class="article-meta"><time datetime={article.data.publishedAt.toISOString()}>{published}</time>{article.data.updatedAt && <span>Updated {new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(article.data.updatedAt)}</span>}</div></header>
+    <article class="prose"><Content /></article>
+  </main>
+  <footer class="creative-shell creative-footer"><span>© 2026 {profile.name}</span><a href="/creative/">All notes</a></footer>
+</BaseLayout>

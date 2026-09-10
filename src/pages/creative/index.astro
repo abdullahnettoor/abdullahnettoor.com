@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profile, site } from "../../data/siteData";
+import "../../styles/creative.css";
+
+const articles = (await getCollection("creative", ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const date = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" });
+---
+<BaseLayout title={`Creative — ${profile.name}`} description={site.creative.description} canonicalPath="/creative/">
+  <header class="creative-shell creative-topbar"><a href="/">← {profile.name}</a><a href={profile.social.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
+  <main>
+    <section class="creative-shell creative-hero"><p class="micro">{site.creative.label}</p><h1>Notes from the work.</h1><p>{site.creative.description}</p></section>
+    <section class="creative-shell archive" aria-label="Articles">
+      {articles.length > 0 ? <div class="archive-list">{articles.map((article) => <a class="archive-row" href={`/creative/${article.id}/`}><time datetime={article.data.publishedAt.toISOString()}>{date.format(article.data.publishedAt)}</time><div><h2>{article.data.title}</h2><p>{article.data.description}</p><div class="topics">{article.data.topics.map((topic) => <span>{topic}</span>)}</div></div>{article.data.draft ? <span class="draft">Draft</span> : <span aria-hidden="true">↗</span>}</a>)}</div> : <div class="empty"><p class="micro">The notebook is open</p><div><h2>The first note is still being written.</h2><p>Creative will collect practical writing about backend systems, product decisions, and lessons from building.</p></div></div>}
+    </section>
+  </main>
+  <footer class="creative-shell creative-footer"><span>© 2026 {profile.name}</span><a href="/">Return to portfolio</a></footer>
+</BaseLayout>

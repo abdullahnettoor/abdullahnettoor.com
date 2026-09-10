@@ -8,13 +8,17 @@ import SelectedWork from "../components/SelectedWork.astro";
 import TechnicalRange from "../components/TechnicalRange.astro";
 import Experience from "../components/Experience.astro";
 import About from "../components/About.astro";
+import CreativePreview from "../components/CreativePreview.astro";
 import Contact from "../components/Contact.astro";
 import ScrollProgress from "../components/ScrollProgress.astro";
-import { profile } from "../data/siteData";
-import { projects } from "../data/siteData";
+import { profile, projects, site } from "../data/siteData";
 import { getCollection } from "astro:content";
 
 const caseStudies = await getCollection("projects");
+const creativeArticles = (await getCollection("creative", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const showCreative = site.creative.homepageVisibility === "show"
+  || (site.creative.homepageVisibility === "auto" && creativeArticles.length > 0);
 const caseStudyIds = new Set(caseStudies.map((entry) => entry.id));
 for (const project of projects) {
   if (project.caseStudy && !caseStudyIds.has(project.id)) {
@@ -32,12 +36,13 @@ for (const caseStudy of caseStudies) {
   description="Abdullah Nettoor is a product-minded backend engineer building reliable systems, open-source tools, and complete software products from Kochi, India."
 >
   <a class="skip-link" href="#practice">Skip to engineering practice</a>
-  <Header />
+  <Header showCreative={showCreative} />
   <main id="top">
     <Hero />
     <Practice />
     <DecisionLedger />
     <SelectedWork />
+    {showCreative && <CreativePreview articles={creativeArticles} label={site.creative.label} description={site.creative.description} />}
     <TechnicalRange />
     <Experience />
     <About />

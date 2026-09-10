@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  articles: CollectionEntry<"creative">[];
+  label: string;
+  description: string;
+}
+
+const { articles, label, description } = Astro.props;
+const visibleArticles = articles
+  .toSorted((a, b) => Number(b.data.featured) - Number(a.data.featured) || b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
+const date = new Intl.DateTimeFormat("en", { month: "short", year: "numeric" });
+---
+<section class="creative-preview" id="creative" aria-labelledby="creative-title">
+  <div class="shell">
+    <div class="creative-head">
+      <div><p class="micro">{label}</p><h2 id="creative-title">Notes from the work.</h2></div>
+      <div><p>{description}</p><a class="text-link" href="/creative/">Read all notes</a></div>
+    </div>
+    <div class="article-list">
+      {visibleArticles.map((article) => (
+        <a class="article-row" href={`/creative/${article.id}/`}>
+          <time datetime={article.data.publishedAt.toISOString()}>{date.format(article.data.publishedAt)}</time>
+          <div><h3>{article.data.title}</h3><p>{article.data.description}</p></div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

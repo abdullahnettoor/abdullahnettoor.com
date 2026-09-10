@@ -27,6 +27,7 @@ Update these files for homepage sections:
 - `src/data/capabilities.json`: technical range;
 - `src/data/experience.json`: current role focus areas;
 - `src/data/projects.json`: homepage work and engineering decisions.
+- `src/data/site.json`: section-level settings, including Creative homepage visibility.
 
 The build validates these files through `src/data/siteData.ts`.
 
@@ -71,6 +72,46 @@ Add an optional `decision` object to include it in Selected Decisions:
 4. Run `npm run validate`.
 
 Astro generates `/work/<id>/`, canonical metadata, facts, workflow steps, engineering concerns, action links, and next-project navigation.
+
+## Publish to Creative
+
+Creative is the site's article section at `/creative/`. Start from `templates/creative-post.md` and save the new file as:
+
+```text
+src/content/creative/article-slug.md
+```
+
+The filename becomes the URL: `/creative/article-slug/`.
+
+Article front matter controls publishing:
+
+```yaml
+publishedAt: 2026-09-10
+draft: false
+featured: true
+topics:
+  - Backend engineering
+```
+
+- `draft: true` keeps the article out of production while still making it available in local development.
+- `featured: true` marks an article as preferred homepage material. The homepage currently shows the three newest published articles.
+- `canonicalUrl` is optional. Use it only when Medium, Substack, or another site hosts the original article.
+
+Control homepage visibility in `src/data/site.json`:
+
+```json
+{
+  "creative": {
+    "homepageVisibility": "auto"
+  }
+}
+```
+
+- `auto`: hide the homepage section until at least one published article exists.
+- `show`: show the section even when the archive is empty.
+- `hide`: keep the homepage section hidden regardless of published content.
+
+Recommended publishing workflow: publish on this site first, then cross-post to Medium or Substack with the article's canonical URL pointing back here. This keeps ownership and SEO authority on the portfolio while using external platforms for distribution.
 
 ## Change the Design
 

@@ -1,5 +1,11 @@
 ---
 import profile from "../data/profile.json";
+
+interface Props {
+  showCreative?: boolean;
+}
+
+const { showCreative = false } = Astro.props;
 ---
 <header class="shell topbar">
   <a class="identity" href="/#top">{profile.name} <span>{profile.headline}</span></a>
@@ -7,6 +13,7 @@ import profile from "../data/profile.json";
     <ul class="nav">
       <li><a href="/#practice">Practice</a></li>
       <li><a href="/#work">Work</a></li>
+      {showCreative && <li><a href="/creative/">Creative</a></li>}
       <li><a href="/#experience">Experience</a></li>
       <li><a class="contact-nav" href="/#contact">Start a conversation</a></li>
     </ul>

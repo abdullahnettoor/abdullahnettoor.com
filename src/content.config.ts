@@ -45,4 +45,18 @@ const projects = defineCollection({
   })
 });
 
-export const collections = { projects };
+const creative = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/creative" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+    featured: z.boolean().default(false),
+    topics: z.array(z.string()).min(1),
+    canonicalUrl: z.url().optional()
+  })
+});
+
+export const collections = { projects, creative };
